@@ -41,4 +41,32 @@ return {
 			vim.keymap.set("n", "<leader>cc", ":ClaudeCode<CR>", { desc = "Toggle Claude Code window" })
 		end,
 	},
+	{
+		"kkrampis/codex.nvim",
+		lazy = true,
+		cmd = { "Codex", "CodexToggle" }, -- Optional: Load only on command execution
+		keys = {
+			{
+				"<leader>cg", -- Change this to your preferred keybinding
+				function()
+					require("codex").toggle()
+				end,
+				desc = "Toggle Codex popup or side-panel",
+				mode = { "n", "t" },
+			},
+		},
+		opts = {
+			keymaps = {
+				toggle = nil, -- Keybind to toggle Codex window (Disabled by default, watch out for conflicts)
+				quit = "<C-q>", -- Keybind to close the Codex window (default: Ctrl + q)
+			}, -- Disable internal default keymap (<leader>cc -> :CodexToggle)
+			width = 0.4, -- Width of the floating window (0.0 to 1.0)
+			model = nil, -- Optional: pass a string to use a specific model (e.g., 'o3-mini')
+			autoinstall = true, -- Automatically install the Codex CLI if not found
+			panel = true, -- Open Codex in a side-panel (vertical split) instead of floating window
+		},
+		config = function(_, opts)
+			require("codex").setup(opts)
+		end,
+	},
 }
