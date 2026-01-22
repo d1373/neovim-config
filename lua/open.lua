@@ -63,4 +63,4 @@ local function open_link()
 end
 
 -- Normal + visual mode mapping
-vim.keymap.set({ "n", "v" }, "<M-b>", open_link, { desc = "Open link in browser" })
+vim.keymap.set({ "n", "v" }, "<C-b>", open_link, { desc = "Open link in browser" })
