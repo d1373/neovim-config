@@ -1,11 +1,9 @@
-require("set")
-require("key")
-require("open")
-require("clipboard")
-_G.vim = vim
--- Setting Up leader Key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+require("set")
+require("key")
+require("clipboard")
+require("status")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -18,11 +16,10 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	require("color"),
+	require("nav"),
 	require("mini"),
+	require("treesitter"),
 	require("lsp"),
-	require("autocomplete"),
-	require("plugins"),
-	require("doc"),
-	require("visual"),
 	require("ai"),
 })

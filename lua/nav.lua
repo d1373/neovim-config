@@ -41,13 +41,14 @@ return {
 					end,
 				},
 			})
-			vim.keymap.set("n", "<leader>o", function()
+      vim.keymap.set("n", "<leader>o", function()
 				if vim.bo.filetype == "oil" then
 					require("oil.actions").close.callback()
 				else
 					vim.cmd("Oil --float")
 				end
 			end, { noremap = true, silent = true, desc = "Toggle Oil.nvim" })
+
 		end,
 	},
 	{
@@ -61,44 +62,40 @@ return {
 			"TmuxNavigatorProcessList",
 		},
 		keys = {
-			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<M-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<M-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<M-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<M-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
 			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 		},
-	},
-	{
-		-- autoclose tags
-		"windwp/nvim-ts-autotag",
 	},
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			local harpoon = require("harpoon")
-			harpoon:setup()
-			local vk = vim.keymap
-			vk.set("n", "<leader>a", function()
-				harpoon:list():add()
-			end)
-			vk.set("n", "<leader>e", function()
-				harpoon.ui:toggle_quick_menu(harpoon:list())
-			end)
+          local harpoon = require("harpoon")
+local vk = vim.keymap
+harpoon:setup()
+vk.set("n", "<leader>a", function()
+	harpoon:list():add()
+end)
+vk.set("n", "<leader>e", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
 
-			vk.set("n", "<leader>h", function()
-				harpoon:list():select(1)
-			end)
-			vk.set("n", "<leader>j", function()
-				harpoon:list():select(2)
-			end)
-			vk.set("n", "<leader>k", function()
-				harpoon:list():select(3)
-			end)
-			vk.set("n", "<leader>l", function()
-				harpoon:list():select(4)
-			end)
+vk.set("n", "<leader>h", function()
+	harpoon:list():select(1)
+end)
+vk.set("n", "<leader>j", function()
+	harpoon:list():select(2)
+end)
+vk.set("n", "<leader>k", function()
+	harpoon:list():select(3)
+end)
+vk.set("n", "<leader>l", function()
+	harpoon:list():select(4)
+end)
 		end,
 	},
 	{
