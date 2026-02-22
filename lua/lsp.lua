@@ -244,6 +244,7 @@ return {
 			vim.lsp.config("rust_analyzer", {})
 			vim.lsp.config("sqls", {})
 			vim.lsp.config("tailwindcss", {})
+			vim.lsp.config("markdown-oxide", {})
 			do
 				local luacheck = require("efmls-configs.linters.luacheck")
 				local stylua = require("efmls-configs.formatters.stylua")
@@ -326,6 +327,7 @@ return {
 				"rust_analyzer",
 				"sqls",
 				"tailwindcss",
+				"markdown-oxide",
 			})
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
